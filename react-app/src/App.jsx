@@ -1,19 +1,21 @@
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { ItemListContainer } from "./components/ItemListContainer"
+import { ItemDetailsContainer } from "./components/ItemDetailsContainer"
+
 import { NavBar } from "./components/navbar"
 function App() {
-  
-
   return (
-    <>
-    <NavBar/>
-    <ItemListContainer greeting="¡Bienvenidos a Groove Vinyl!
-    En Groove Vinyl, celebramos la música electrónica con una selecta colección de vinilos, desde clásicos hasta las últimas novedades. Nuestro equipo apasionado te guiará para descubrir y redescubrir joyas musicales.
-
-Únete a nuestra comunidad y disfruta de eventos en vivo y sesiones de DJ. ¡Sumérgete en la magia del vinilo con nosotros!
-
-¡Te esperamos!"/>
-    </>
-  )
+    <BrowserRouter>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<ItemListContainer />} />
+        <Route path="/category/:id" element={<ItemListContainer />} />
+        <Route path="/item/:id" element={<ItemDetailsContainer />} />
+        <Route path="*" element={404} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
+
 
 export default App
